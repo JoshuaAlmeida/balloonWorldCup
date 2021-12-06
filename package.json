@@ -1,0 +1,8 @@
+{
+  "name": "balloonworldcup",
+  "version": "1.0.0",
+  "description": "Prueba técnica Balloon World Cup",
+  "main": "main.js",
+  "author": "Joshua",
+  "license": "ISC"
+}
