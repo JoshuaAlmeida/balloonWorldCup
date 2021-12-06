@@ -31,18 +31,19 @@ const getPointMatch = (playerHitBalloon, playerRecievedBalloon) => {
 const playMatch = (match) => {
 
     let playerWinPoint = getPointMatch(match.player1, match.player2)
+    let scoreToVictory = 4
 
-    while (match.scorePlayer1 !== 4 || match.scorePlayer2 !== 4){
+    while (match.scorePlayer1 !== scoreToVictory || match.scorePlayer2 !== scoreToVictory){
         if (playerWinPoint.idPlayer === match.player1.idPlayer) {
             match.scorePlayer1++
             playerWinPoint = getPointMatch(match.player2, match.player1)
-            if (match.scorePlayer1 === 4) {
+            if (match.scorePlayer1 === scoreToVictory) {
                 return match.player1
             }
         }else{
             match.scorePlayer2++
             playerWinPoint = getPointMatch(match.player1, match.player2)
-            if (match.scorePlayer2 === 4) {
+            if (match.scorePlayer2 === scoreToVictory) {
                 return match.player2 
             }
         }
@@ -50,6 +51,7 @@ const playMatch = (match) => {
 }
 
 const getMatchInfoDetail = (match) => {
+    let scoreToVictory = 4
     return {
         round: match.round,
         player1Name : match.player1.name,
@@ -58,8 +60,8 @@ const getMatchInfoDetail = (match) => {
         player2Name : match.player2.name,
         player2Country : match.player2.country,
         scorePlayer2: match.scorePlayer2,
-        winnerName : match.scorePlayer1 === 4 ? match.player1.name :  match.player2.name,
-        countryName : match.scorePlayer1 === 4 ? match.player1.country :  match.player2.country
+        winnerName : match.scorePlayer1 === scoreToVictory ? match.player1.name :  match.player2.name,
+        countryName : match.scorePlayer1 === scoreToVictory ? match.player1.country :  match.player2.country
     }
 }
 
